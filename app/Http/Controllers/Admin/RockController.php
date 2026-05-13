@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Mood;
+use App\Models\Rarity;
 use App\Models\Rock;
+use App\Models\RockType;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class RockController extends Controller
@@ -22,7 +26,12 @@ class RockController extends Controller
      */
     public function create()
     {
-        //
+        return view('rocks.create', [ 
+            'moods' => Mood::all(), 
+            'types' => RockType::all(), 
+            'rarities' => Rarity::all(),
+            'skills' => Skill::all()
+            ]);
     }
 
     /**
@@ -30,7 +39,7 @@ class RockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 'store';
     }
 
     /**

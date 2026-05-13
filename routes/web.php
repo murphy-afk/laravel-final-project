@@ -27,6 +27,10 @@ Route::middleware(['auth', 'verified'])
         ->name('home');
         Route::get('/rocks', [RockController::class, 'index'])
         ->name('rocks.index');
+        Route::get('/rocks/create', [RockController::class, 'create'])
+        ->name('rocks.create');
+        Route::post('/rocks', [RockController::class, 'store'])
+        ->name('rocks.store');
     });
 
 
