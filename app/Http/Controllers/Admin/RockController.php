@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Rock;
 use Illuminate\Http\Request;
 
 class RockController extends Controller
@@ -12,7 +13,8 @@ class RockController extends Controller
      */
     public function index()
     {
-        //
+        $rocks = Rock::with(['rarity', 'mood', 'type'])->get();
+        return view('rocks.index', compact('rocks') );
     }
 
     /**

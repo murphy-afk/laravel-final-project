@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\RockController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,8 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::get('/home', [DashboardController::class, 'home'])
         ->name('home');
+        Route::get('/rocks', [RockController::class, 'index'])
+        ->name('rocks.index');
     });
 
 
