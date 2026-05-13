@@ -18,7 +18,7 @@ class RockController extends Controller
     public function index()
     {
         $rocks = Rock::with(['rarity', 'mood', 'type'])->get();
-        return view('rocks.index', compact('rocks') );
+        return view('rocks.index', compact('rocks'));
     }
 
     /**
@@ -26,12 +26,12 @@ class RockController extends Controller
      */
     public function create()
     {
-        return view('rocks.create', [ 
-            'moods' => Mood::all(), 
-            'types' => RockType::all(), 
+        return view('rocks.create', [
+            'moods' => Mood::all(),
+            'types' => RockType::all(),
             'rarities' => Rarity::all(),
             'skills' => Skill::all()
-            ]);
+        ]);
     }
 
     /**
@@ -39,8 +39,27 @@ class RockController extends Controller
      */
     public function store(Request $request)
     {
-        return 'store';
+        $data = $request->all();
+
+        $newRock = new Rock();
+        $newRock->name = $data['name'];
+        $newRock->weight = $data['weight'];
+        $newRock->texture = $data['texture'];
+        $newRock->color = $data['color'];
+        $newRock->price = $data['price'];
+        $newRock->origin_story = $data['origin_story'];
+        $newRock->mood_id = $data['mood_id'];
+        $newRock->rarity_id = $data['rarity_id'];
+        $newRock->type_id = $data['type_id'];
+        $newRock->save();
+
+        if ($request->has('skills')) {
+            $newRock->skills()->attach($data['skills']);
+        }
+
+        return redirect()->route('admin.rocks.index');
     }
+
 
     /**
      * Display the specified resource.

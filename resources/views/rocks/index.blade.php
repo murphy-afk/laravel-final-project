@@ -41,7 +41,7 @@
               <div class="mb-5">
                 <span class="text-secondary">Skills:</span>
                 @foreach ($rock->skills as $skill)
-                  <span class="fw-bold">{{ $skill->name }}</span>
+                  <span class="text-bg-light badge ">{{ $skill->name }}</span>
                 @endforeach
               </div>
               <div class="d-flex justify-content-start gap-2 mt-3">
