@@ -19,7 +19,16 @@
                     Create New Rock
                 </a>
                 <a href="" class="btn btn-primary btn-sm mt-2">
-                    Go to Something Else
+                    Add Moods
+                </a>
+                <a href="" class="btn btn-primary btn-sm mt-2">
+                    Add Types
+                </a>
+                <a href="" class="btn btn-primary btn-sm mt-2">
+                    Add Rarities
+                </a>
+                <a href="" class="btn btn-primary btn-sm mt-2">
+                    Add Skills
                 </a>
             </div>
 

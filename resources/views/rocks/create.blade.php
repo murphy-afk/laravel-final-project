@@ -82,6 +82,7 @@
               <textarea name="origin_story" class="form-control" rows="4"
                 placeholder="Found meditating by a river..."></textarea>
             </div>
+            <!-- TODO: add image upload field -->
           </div>
           <div class="mt-4 d-flex justify-content-end gap-2">
             <a href="{{ route('admin.rocks.index') }}" class="btn btn-outline-danger">Cancel</a>

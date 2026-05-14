@@ -66,7 +66,8 @@ class RockController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $rock = Rock::with(['rarity', 'mood', 'type', 'skills'])->find($id);
+        return view('rocks.show', compact('rock'));
     }
 
     /**
@@ -74,7 +75,14 @@ class RockController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $rock = Rock::with(['rarity', 'mood', 'type', 'skills'])->find($id);
+        return view('rocks.edit', [
+            'rock' => $rock,
+            'moods' => Mood::all(),
+            'types' => RockType::all(),
+            'rarities' => Rarity::all(),
+            'skills' => SKill::all()
+        ]);
     }
 
     /**
@@ -82,7 +90,20 @@ class RockController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->all();
+
+        $rock = Rock::find($id);
+        $rock->name = $data['name'];
+        $rock->weight = $data['weight'];
+        $rock->texture = $data['texture'];
+        $rock->color = $data['color'];
+        $rock->price = $data['price'];
+        $rock->origin_story = $data['origin_story'];
+        $rock->mood_id = $data['mood_id'];
+        $rock->rarity_id = $data['rarity_id'];
+        $rock->type_id = $data['type_id'];
+        $rock->save();
+        return redirect()->route('admin.rocks.show', $rock->id);
     }
 
     /**

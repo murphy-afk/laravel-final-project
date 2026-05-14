@@ -7,7 +7,7 @@
 
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1 class="fw-bold">All Pet Rocks</h1>
-      <!-- add a new rock -->
+      <a href="{{ route('admin.rocks.create') }}" class="btn btn-primary">Add a new rock</a>
     </div>
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -45,8 +45,8 @@
                 @endforeach
               </div>
               <div class="d-flex justify-content-start gap-2 mt-3">
-                <a href="" class="btn btn-outline-light btn-sm">View</a>
-                <a href="" class="btn btn-outline-warning btn-sm">Edit</a>
+                <a href="{{ route('admin.rocks.show', $rock->id) }}" class="btn btn-outline-light btn-sm">View</a>
+                <a href="{{ route('admin.rocks.edit', $rock->id) }}" class="btn btn-outline-warning btn-sm">Edit</a>
                 <form action="" method="POST">
                   @csrf
                   @method('DELETE')

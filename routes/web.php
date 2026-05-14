@@ -31,6 +31,12 @@ Route::middleware(['auth', 'verified'])
         ->name('rocks.create');
         Route::post('/rocks', [RockController::class, 'store'])
         ->name('rocks.store');
+        Route::get('/rocks/{id}', [RockController::class, 'show'])
+        ->name('rocks.show');
+        Route::get('/rocks/{id}/edit', [RockController::class, 'edit'])
+        ->name('rocks.edit');
+        Route::put('/rocks/{id}', [RockController::class, 'update'])
+        ->name('rocks.update');
     });
 
 
