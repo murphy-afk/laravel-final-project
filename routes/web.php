@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MoodController;
+use App\Http\Controllers\Admin\RarityController;
 use App\Http\Controllers\Admin\RockController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,8 @@ Route::middleware(['auth', 'verified'])
         ->name('moods.update');
         Route::delete('/moods/{id}', [MoodController::class, 'destroy'])
         ->name('moods.destroy');
+        Route::get('/rarities', [RarityController::class, 'index'])
+        ->name('rarities.index');
     });
 
 

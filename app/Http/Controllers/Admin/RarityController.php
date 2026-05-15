@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Rarity;
 use Illuminate\Http\Request;
 
 class RarityController extends Controller
@@ -12,7 +13,8 @@ class RarityController extends Controller
      */
     public function index()
     {
-        //
+        $rarities = Rarity::all();
+        return view('rarities.index', compact('rarities'));
     }
 
     /**

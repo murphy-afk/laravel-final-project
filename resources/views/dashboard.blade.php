@@ -34,7 +34,7 @@
                             <a href="" class="btn btn-outline-secondary p-4 fw-bold mt-2 me-1">
                                 Types
                             </a>
-                            <a href="" class="btn btn-outline-dark p-4 fw-bold mt-2 me-1">
+                            <a href="{{ route('admin.rarities.index') }}" class="btn btn-outline-dark p-4 fw-bold mt-2 me-1">
                                 Rarities
                             </a>
                             <a href="" class="btn btn-outline-warning p-4 fw-bold mt-2">
