@@ -59,7 +59,11 @@ Route::middleware(['auth', 'verified'])
         ->name('rarities.create');
         Route::post('/rarities', [RarityController::class, 'store'])
         ->name('rarities.store');
-        
+        Route::get('/rarities/{id}/edit', [RarityController::class, 'edit'])
+        ->name('rarities.edit');
+        Route::put('/rarities({id}', [RarityController::class, 'update'])
+        ->name('rarities.update');
+
     });
 
 

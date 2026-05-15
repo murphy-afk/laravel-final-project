@@ -32,7 +32,7 @@
                   {{ $rarity->multiplier ?? '—' }}
                 </td>
                 <td class="text-end">
-                  <a href="" class="btn btn-sm btn-outline-warning me-2">
+                  <a href="{{ route('admin.rarities.edit', $rarity->id) }}" class="btn btn-sm btn-outline-warning me-2">
                     Edit
                   </a>
                   <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"

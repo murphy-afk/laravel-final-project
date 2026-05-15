@@ -54,7 +54,8 @@ class RarityController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $rarity = Rarity::find($id);
+        return view('rarities.edit', compact('rarity'));
     }
 
     /**
@@ -62,7 +63,15 @@ class RarityController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->all();
+
+        $rarity = Rarity::find($id);
+        $rarity->name =$data['name'];
+        $rarity->color_tag = $data['color_tag'];
+        $rarity->multiplier =$data['multiplier'];
+        $rarity->save();
+
+        return redirect()->route('admin.rarities.index');
     }
 
     /**
