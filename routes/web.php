@@ -63,6 +63,8 @@ Route::middleware(['auth', 'verified'])
         ->name('rarities.edit');
         Route::put('/rarities({id}', [RarityController::class, 'update'])
         ->name('rarities.update');
+        Route::delete('/rarities/{id}', [RarityController::class, 'destroy'])
+        ->name('rarities.destroy');
 
     });
 

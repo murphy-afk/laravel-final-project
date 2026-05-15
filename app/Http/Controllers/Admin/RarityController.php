@@ -79,6 +79,9 @@ class RarityController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $rarity = Rarity::find($id);
+        $rarity->delete();
+
+        return redirect()->route('admin.rarities.index');
     }
 }

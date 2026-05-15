@@ -56,7 +56,7 @@
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             Cancel
                           </button>
-                          <form action="" method="POST">
+                          <form action="{{ route('admin.rarities.destroy', $rarity->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">Delete</button>
