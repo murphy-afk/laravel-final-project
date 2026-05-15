@@ -77,6 +77,9 @@ class MoodController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $mood = Mood::find($id);
+        $mood->delete();
+
+        return redirect()->route('admin.moods.index');
     }
 }

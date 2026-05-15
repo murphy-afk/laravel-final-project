@@ -50,6 +50,8 @@ Route::middleware(['auth', 'verified'])
         ->name('moods.edit');
         Route::put('/moods/{id}', [MoodController::class, 'update'])
         ->name('moods.update');
+        Route::delete('/moods/{id}', [MoodController::class, 'destroy'])
+        ->name('moods.destroy');
     });
 
 

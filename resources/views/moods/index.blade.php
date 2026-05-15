@@ -52,11 +52,10 @@
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             Cancel
                           </button>
-                          <form action="" method="POST">
-                            <!-- TODO -->
+                          <form action="{{ route('admin.moods.destroy', $mood->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btn-sm">Delete</button>
+                            <button class="btn btn-danger">Delete</button>
                           </form>
                         </div>
 

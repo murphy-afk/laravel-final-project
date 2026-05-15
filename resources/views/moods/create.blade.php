@@ -15,12 +15,12 @@
           <div class="row g-4">
             <div class="col-md-6">
               <label class="form-label text-light">Mood Name</label>
-              <input type="text" name="name" class="form-control bg-light text-secondary border-secondary"
+              <input type="text" name="name" class="form-control bg-light text-dark border-secondary"
                 placeholder="e.g. Grumpy, Sleepy, Chaotic Neutral" required>
             </div>
             <div class="col-md-12">
               <label class="form-label text-light">Description</label>
-              <textarea name="description" class="form-control bg-light text-secondary border-secondary" rows="4"
+              <textarea name="description" class="form-control bg-light text-dark border-secondary" rows="4"
                 placeholder="Optional: describe the mood's vibe or behavior"></textarea>
             </div>
           </div>
