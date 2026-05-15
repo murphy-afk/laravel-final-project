@@ -42,6 +42,14 @@ Route::middleware(['auth', 'verified'])
         ->name('rocks.update');
         Route::get('/moods', [MoodController::class, 'index'])
         ->name('moods.index');
+        Route::get('/moods/create', [MoodController::class, 'create'])
+        ->name('moods.create');
+        Route::post('/moods', [MoodController::class, 'store'])
+        ->name('moods.store');
+        Route::get('/moods/{id}/edit', [MoodController::class, 'edit'])
+        ->name('moods.edit');
+        Route::put('/moods/{id}', [MoodController::class, 'update'])
+        ->name('moods.update');
     });
 
 

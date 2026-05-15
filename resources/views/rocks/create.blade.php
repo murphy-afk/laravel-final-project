@@ -1,4 +1,4 @@
-@extends('layouts.rocks')
+@extends('layouts.app')
 
 @section('title', 'New Pet Rock')
 

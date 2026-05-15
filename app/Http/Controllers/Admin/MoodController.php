@@ -22,7 +22,7 @@ class MoodController extends Controller
      */
     public function create()
     {
-        //
+        return view('moods.create');
     }
 
     /**
@@ -30,7 +30,14 @@ class MoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newMood = new Mood();
+        $newMood->name = $data['name'];
+        $newMood->description = $data['description'] ?? null;
+        $newMood->save();
+
+        return redirect()->route('admin.moods.index');
     }
 
     /**
@@ -46,7 +53,8 @@ class MoodController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $mood = Mood::find($id);
+        return view('moods.edit', compact('mood'));
     }
 
     /**
@@ -54,7 +62,14 @@ class MoodController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->all();
+
+        $mood = Mood::find($id);
+        $mood->name = $data['name'];
+        $mood->description = $data['description'] ?? null;
+        $mood->save();
+
+        return redirect()->route('admin.moods.index');
     }
 
     /**

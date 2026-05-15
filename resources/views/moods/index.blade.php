@@ -1,4 +1,4 @@
-@extends('layouts.moods')
+@extends('layouts.app')
 
 @section('title', 'All Moods')
 
@@ -6,8 +6,7 @@
   <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1 class="fw-bold">All Moods</h1>
-      <a href="" class="btn btn-primary">
-        <!-- TODO -->
+      <a href="{{ route('admin.moods.create') }}" class="btn btn-secondary">
         Add Mood
       </a>
     </div>
@@ -29,8 +28,7 @@
                   {{ $mood->description ?? '—' }}
                 </td>
                 <td class="text-end">
-                  <a href="" class="btn btn-sm btn-outline-warning me-2">
-                    <!-- TODO -->
+                  <a href="{{ route('admin.moods.edit', $mood->id) }}" class="btn btn-sm btn-outline-warning me-2">
                     Edit
                   </a>
                   <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"

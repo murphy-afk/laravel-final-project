@@ -12,10 +12,9 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        {{ __('You are logged in!') }}
+                        <!-- {{ __('You are logged in!') }} -->
 
-                        <h1 class="fw-bold">Rock Adoption Center</h1>
-                        <p class="text-light">Welcome back</p>
+                        <h1 class="fw-bold">Rock Adoption Center Admin Panel</h1>
                     </div>
                     <div class="card shadow-sm border-0 h-100">
                         <div class="card-body py-4">
