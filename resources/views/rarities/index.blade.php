@@ -6,7 +6,7 @@
    <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1 class="fw-bold">All Rarities</h1>
-      <a href="" class="btn btn-secondary">
+      <a href="{{ route('admin.rarities.create') }}" class="btn btn-secondary">
         Add Rarity
       </a>
     </div>

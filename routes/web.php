@@ -55,6 +55,11 @@ Route::middleware(['auth', 'verified'])
         ->name('moods.destroy');
         Route::get('/rarities', [RarityController::class, 'index'])
         ->name('rarities.index');
+        Route::get('/rarities/create', [RarityController::class, 'create'])
+        ->name('rarities.create');
+        Route::post('/rarities', [RarityController::class, 'store'])
+        ->name('rarities.store');
+        
     });
 
 

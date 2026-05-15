@@ -22,7 +22,7 @@ class RarityController extends Controller
      */
     public function create()
     {
-        //
+        return view('rarities.create');
     }
 
     /**
@@ -30,7 +30,15 @@ class RarityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newRarity = new Rarity();
+        $newRarity->name = $data['name'];
+        $newRarity->color_tag = $data['color_tag'] ?? null;
+        $newRarity->multiplier = $data['multiplier'] ?? 1;
+        $newRarity->save();
+
+        return redirect()->route('admin.rarities.index');
     }
 
     /**
