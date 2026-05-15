@@ -29,17 +29,17 @@
                                 class="btn btn-outline-success p-4 fw-bold mt-2 me-1">
                                 Create New Rock
                             </a>
-                            <a href="" class="btn btn-outline-info p-4 fw-bold mt-2 me-1">
-                                Add Moods
+                            <a href="{{ route('admin.moods.index') }}" class="btn btn-outline-info p-4 fw-bold mt-2 me-1">
+                                Moods
                             </a>
                             <a href="" class="btn btn-outline-secondary p-4 fw-bold mt-2 me-1">
-                                Add Types
+                                Types
                             </a>
                             <a href="" class="btn btn-outline-dark p-4 fw-bold mt-2 me-1">
-                                Add Rarities
+                                Rarities
                             </a>
                             <a href="" class="btn btn-outline-warning p-4 fw-bold mt-2">
-                                Add Skills
+                                Skills
                             </a>
                         </div>
                     </div>
