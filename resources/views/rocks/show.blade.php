@@ -3,7 +3,6 @@
 @section('title', $rock->name)
 
 @section('content')
-
   <div class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1 class="fw-bold">{{ $rock->name }}</h1>
@@ -28,36 +27,58 @@
         <div class="col-md-8">
           <div class="card-body">
             <h4 class="fw-bold mb-3">Rock Details</h4>
-            <p>Weight: {{ $rock->weight }} g</p>
-            <p>Texture: {{ $rock->texture }}</p>
-            <p>Color: {{ $rock->color }}</p>
-            <p>Price: €{{ number_format($rock->price, 2) }}</p>
-            <p>Mood: {{ $rock->mood?->name }}</p>
-            <p>Rarity: {{ $rock->rarity?->name }}</p>
-            <p>Type:
-              @if($rock->type)
-                {{ $rock->type->name }}
-              @else
-                No type assigned
-              @endif
-            </p>
-            <p class="mt-3">Origin Story:</p>
-            <p class="text-muted">{{ $rock->origin_story }}</p>
+            <div class="row row-cols-1 row-cols-md-2 g-3">
+              <div class="col">
+                <span class="text-secondary ">Weight</span>
+                <p class="fw-bold mb-0">{{ $rock->weight }} g</p>
+              </div>
+              <div class="col">
+                <span class="text-secondary ">Texture</span>
+                <p class="fw-bold mb-0">{{ $rock->texture }}</p>
+              </div>
+              <div class="col">
+                <span class="text-secondary ">Color</span>
+                <p class="fw-bold mb-0">{{ $rock->color }}</p>
+              </div>
+              <div class="col">
+                <span class="text-secondary ">Price</span>
+                <p class="fw-bold mb-0">€{{ number_format($rock->price, 2) }}</p>
+              </div>
+              <div class="col">
+                <span class="text-secondary ">Mood</span>
+                <p class="fw-bold mb-0">{{ $rock->mood?->name }}</p>
+              </div>
+              <div class="col">
+                <span class="text-secondary ">Rarity</span>
+                <p class="fw-bold mb-0">{{ $rock->rarity?->name }}</p>
+              </div>
+              <div class="col">
+                <span class="text-secondary ">Type</span>
+                <p class="fw-bold mb-0">
+                  {{ $rock->type?->name ?? 'No type assigned' }}
+                </p>
+              </div>
+              <div class="col">
+                <span class="text-secondary ">Skills</span>
+                <p class="fw-bold mb-0">
+                  @if($rock->skills->count())
+                    @foreach ($rock->skills as $skill)
+                      <span class="me-1">-{{ $skill->name }}</span> 
+                    @endforeach
+                  @else
+                    <span class="text-muted">None</span>
+                  @endif
+                </p>
+              </div>
+            </div>
+            <div class="mt-4">
+              <span class="text-secondary ">Origin Story</span>
+              <p class="fw-bold mb-0">{{ $rock->origin_story }}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="card shadow-sm mb-4">
-      <div class="card-body">
-        <h4 class="fw-bold mb-3">Skills</h4>
-        @if($rock->skills && $rock->skills->count() > 0)
-          @foreach ($rock->skills as $skill)
-            <span class="badge bg-primary me-2 mb-2">{{ $skill->name }}</span>
-          @endforeach
-        @else
-          <p class="text-muted">This rock has no skills yet :< </p>
-        @endif
-      </div>
-    </div>
+  </div>
   </div>
 @endsection

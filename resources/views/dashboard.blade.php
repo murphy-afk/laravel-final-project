@@ -1,27 +1,51 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <!-- <h2 class="fs-4 text-dark my-4">
-        {{ __('Dashboard') }}
-    </h2> -->
-    <div class="row justify-content-center mt-4">
-        <div class="col">
-            <div class="card">
-                <!-- <div class="card-header">{{ __('Dashboard') }}</div> -->
+    <div class="container">
 
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
+        <div class="row justify-content-center mt-4">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        {{ __('You are logged in!') }}
+
+                        <h1 class="fw-bold">Rock Adoption Center</h1>
+                        <p class="text-light">Welcome back</p>
                     </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                    <!-- <a href={{ route('admin.rocks.index') }} class="btn btn-primary">All Rocks</a> -->
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-body py-4">
+                            <h5 class="fw-bold mb-2">Manage Rocks</h5>
+                            <p class="text-secondary">Create, edit, and organize pet rocks and attributes</p>
+                            <a href="{{ route('admin.rocks.index') }}"
+                                class="btn btn-outline-primary p-4 fw-bold mt-2 me-1">
+                                Go to Rocks
+                            </a>
+                            <a href="{{ route('admin.rocks.create') }}"
+                                class="btn btn-outline-success p-4 fw-bold mt-2 me-1">
+                                Create New Rock
+                            </a>
+                            <a href="" class="btn btn-outline-info p-4 fw-bold mt-2 me-1">
+                                Add Moods
+                            </a>
+                            <a href="" class="btn btn-outline-secondary p-4 fw-bold mt-2 me-1">
+                                Add Types
+                            </a>
+                            <a href="" class="btn btn-outline-dark p-4 fw-bold mt-2 me-1">
+                                Add Rarities
+                            </a>
+                            <a href="" class="btn btn-outline-warning p-4 fw-bold mt-2">
+                                Add Skills
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    >
 @endsection

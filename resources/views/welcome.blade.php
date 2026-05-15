@@ -1,44 +1,15 @@
 @extends('layouts.app')
 
+@section('title', 'Welcome')
+
 @section('content')
-    <div class="container py-5">
-
-        <div class="mb-4">
-            <h1 class="fw-bold">Rock Adoption Center</h1>
-            <p class="text-light">Welcome back {{ Auth::user()->name }}</p>
-        </div>
-
-        <div class="card shadow-sm border-0 h-100">
-            <div class="card-body py-4">
-                <h5 class="fw-bold mb-2">Manage Rocks</h5>
-                <p class="text-secondary">Create, edit, and organize pet rocks and attributes</p>
-                <a href="{{ route('admin.rocks.index') }}" 
-                class="btn btn-outline-primary p-4 fw-bold mt-2 me-1">
-                    Go to Rocks
-                </a>
-                <a href="{{ route('admin.rocks.create') }}" 
-                class="btn btn-outline-success p-4 fw-bold mt-2 me-1">
-                    Create New Rock
-                </a>
-                <a href="" 
-                class="btn btn-outline-info p-4 fw-bold mt-2 me-1">
-                    Add Moods
-                </a>
-                <a href="" 
-                class="btn btn-outline-secondary p-4 fw-bold mt-2 me-1">
-                    Add Types
-                </a>
-                <a href="" 
-                class="btn btn-outline-dark p-4 fw-bold mt-2 me-1">
-                    Add Rarities
-                </a>
-                <a href="" 
-                class="btn btn-outline-warning p-4 fw-bold mt-2">
-                    Add Skills
-                </a>
-            </div>
-
-        </div>
-
+<div class="container d-flex justify-content-center align-items-center" style="height: 70vh;">
+    <div class="text-center">
+        <h1 class="fw-bold mb-3">Welcome</h1>
+        <p class="text-light fs-5 mb-4">Please log in to access the Pet Rock Admin Panel</p>
+        <a href="{{ route('login') }}" class="btn btn-secondary px-4 py-2">
+            Log In
+        </a>
     </div>
+</div>
 @endsection
