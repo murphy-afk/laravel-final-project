@@ -9,8 +9,8 @@
       <h1 class="fw-bold">{{ $rock->name }}</h1>
       <div>
         <a href="{{ route('admin.rocks.index') }}" class="btn btn-secondary me-2">Back</a>
-        <a href="" class="btn btn-primary me-2">Edit</a>
-        <form action="" method="POST" class="d-inline">
+        <a href="{{ route('admin.rocks.edit', $rock->id) }}" class="btn btn-primary me-2">Edit</a>
+        <form action="{{ route('admin.rocks.destroy', $rock->id) }}" method="POST" class="d-inline">
           @csrf
           @method('DELETE')
           <button class="btn btn-danger" onclick="return confirm('Delete this rock?')">

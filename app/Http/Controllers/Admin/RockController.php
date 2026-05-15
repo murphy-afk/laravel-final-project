@@ -111,6 +111,9 @@ class RockController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $rock = Rock::find($id);
+        $rock->skills()->detach();
+        $rock->delete();
+        return redirect()->route('admin.rocks.index');
     }
 }

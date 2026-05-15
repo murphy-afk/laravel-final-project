@@ -31,6 +31,8 @@ Route::middleware(['auth', 'verified'])
         ->name('rocks.create');
         Route::post('/rocks', [RockController::class, 'store'])
         ->name('rocks.store');
+        Route::delete('/rocks/{id}', [RockController::class, 'destroy'])
+        ->name('rocks.destroy');
         Route::get('/rocks/{id}', [RockController::class, 'show'])
         ->name('rocks.show');
         Route::get('/rocks/{id}/edit', [RockController::class, 'edit'])
