@@ -31,7 +31,7 @@
                             <a href="{{ route('admin.moods.index') }}" class="btn btn-outline-info p-4 fw-bold mt-2 me-1">
                                 Moods
                             </a>
-                            <a href="" class="btn btn-outline-secondary p-4 fw-bold mt-2 me-1">
+                            <a href="{{ route('admin.types.index') }}" class="btn btn-outline-secondary p-4 fw-bold mt-2 me-1">
                                 Types
                             </a>
                             <a href="{{ route('admin.rarities.index') }}" class="btn btn-outline-dark p-4 fw-bold mt-2 me-1">

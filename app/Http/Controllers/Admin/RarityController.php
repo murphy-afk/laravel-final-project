@@ -66,9 +66,9 @@ class RarityController extends Controller
         $data = $request->all();
 
         $rarity = Rarity::find($id);
-        $rarity->name =$data['name'];
+        $rarity->name = $data['name'];
         $rarity->color_tag = $data['color_tag'];
-        $rarity->multiplier =$data['multiplier'];
+        $rarity->multiplier = $data['multiplier'];
         $rarity->save();
 
         return redirect()->route('admin.rarities.index');
@@ -80,6 +80,12 @@ class RarityController extends Controller
     public function destroy(string $id)
     {
         $rarity = Rarity::find($id);
+
+        if ($rarity->rocks()->count() > 0) {
+            return redirect()->route('admin.rarities.index')
+                ->with('error', 'Cannot delete this rarity because rocks are using it');
+        }
+
         $rarity->delete();
 
         return redirect()->route('admin.rarities.index');

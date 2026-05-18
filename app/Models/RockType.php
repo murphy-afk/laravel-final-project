@@ -13,6 +13,6 @@ class RockType extends Model
 
     public function rocks()
     {
-        return $this->hasMany(Rock::class);
+        return $this->hasMany(Rock::class, 'type_id');
     }
 }

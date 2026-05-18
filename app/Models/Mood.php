@@ -14,6 +14,6 @@ class Mood extends Model
 
     public function rocks()
     {
-        return $this->hasMany(Rock::class);
+        return $this->hasMany(Rock::class, 'mood_id');
     }
 }

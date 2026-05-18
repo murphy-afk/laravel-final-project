@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\RockType;
 use Illuminate\Http\Request;
 
 class RockTypeController extends Controller
@@ -12,7 +13,8 @@ class RockTypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = RockType::all();
+        return view('types.index', compact('types'));
     }
 
     /**
@@ -20,7 +22,7 @@ class RockTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('types.create');
     }
 
     /**
@@ -28,7 +30,13 @@ class RockTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newTyper = new RockType();
+        $newTyper->name = $data['name'];
+        $newTyper->description = $data['description'] ?? null;
+        $newTyper->save();
+        return redirect()->route('admin.types.index');
     }
 
     /**
@@ -44,7 +52,8 @@ class RockTypeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $type = RockType::find($id);
+        return view('types.edit', compact('type'));
     }
 
     /**
@@ -52,14 +61,31 @@ class RockTypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->all();
+
+        $type = RockType::find($id);
+        $type->name = $data['name'];
+        $type->description = $data['description'] ?? null;
+        $type->save();
+        return redirect()->route('admin.types.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $type = RockType::find($id);
+
+        if ($type->rocks()->count() > 0) {
+            return redirect()->route('admin.types.index')
+                ->with('error', 'Cannot delete this type because rocks are using it');
+        }
+
+        $type->delete();
+
+        return redirect()->route('admin.types.index');
     }
+
+
 }

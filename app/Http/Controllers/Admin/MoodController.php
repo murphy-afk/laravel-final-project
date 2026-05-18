@@ -78,6 +78,12 @@ class MoodController extends Controller
     public function destroy(string $id)
     {
         $mood = Mood::find($id);
+
+        if ($mood->rocks()->count() > 0) {
+            return redirect()->route('admin.moods.index')
+                ->with('error', 'Cannot delete this mood because rocks are using it');
+        }
+
         $mood->delete();
 
         return redirect()->route('admin.moods.index');

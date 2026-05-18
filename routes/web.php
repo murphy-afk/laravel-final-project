@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MoodController;
 use App\Http\Controllers\Admin\RarityController;
 use App\Http\Controllers\Admin\RockController;
+use App\Http\Controllers\Admin\RockTypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +66,19 @@ Route::middleware(['auth', 'verified'])
         ->name('rarities.update');
         Route::delete('/rarities/{id}', [RarityController::class, 'destroy'])
         ->name('rarities.destroy');
+        Route::get('/types', [RockTypeController::class, 'index'])
+        ->name('types.index');
+        Route::get('/types/create', [RockTypeController::class, 'create'])
+        ->name('types.create');
+        Route::post('/types', [RockTypeController::class, 'store'])
+        ->name('types.store');
+        Route::get('/types/{id}/edit', [RockTypeController::class, 'edit'])
+        ->name('types.edit');
+        Route::put('/types/{id}', [RockTypeController::class, 'update'])
+        ->name('types.update');
+        Route::delete('/types/{id}', [RockTypeController::class, 'destroy'])
+        ->name('types.delete');
+
 
     });
 

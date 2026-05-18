@@ -14,6 +14,6 @@ class Rarity extends Model
 
     public function rocks()
     {
-        return $this->hasMany(Rock::class);
+        return $this->hasMany(Rock::class, 'rarity_id');
     }
 }
