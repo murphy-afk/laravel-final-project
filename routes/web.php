@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\MoodController;
 use App\Http\Controllers\Admin\RarityController;
 use App\Http\Controllers\Admin\RockController;
 use App\Http\Controllers\Admin\RockTypeController;
+use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -78,7 +79,18 @@ Route::middleware(['auth', 'verified'])
         ->name('types.update');
         Route::delete('/types/{id}', [RockTypeController::class, 'destroy'])
         ->name('types.delete');
-
+        Route::get('/skills', [SkillController::class, 'index'])
+        ->name('skills.index');
+        Route::get('/skills/create', [SkillController::class, 'create'])
+        ->name('skills.create');
+        Route::post('/skills', [SkillController::class, 'store'])
+        ->name('skills.store');
+        Route::get('/skills/{id}/edit', [SkillController::class, 'edit'])
+        ->name('skills.edit');
+        Route::put('/skills/{id}', [SkillController::class,'update'])
+        ->name('skills.update');
+        Route::delete('/skills/{id}', [SkillController::class, 'destroy'])
+        ->name('skills.delete');
 
     });
 

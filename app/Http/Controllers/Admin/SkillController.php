@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class SkillController extends Controller
@@ -12,7 +13,8 @@ class SkillController extends Controller
      */
     public function index()
     {
-        //
+        $skills = Skill::all();
+        return view('skills.index', compact('skills'));
     }
 
     /**
@@ -20,7 +22,7 @@ class SkillController extends Controller
      */
     public function create()
     {
-        //
+        return view('skills.create');
     }
 
     /**
@@ -28,7 +30,15 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newSkill = new Skill();
+        $newSkill->name = $data['name'];
+        $newSkill->description = $data['description'] ?? null;
+        $newSkill->power_level = $data['power_level'];
+        $newSkill->save();
+
+        return redirect()->route('admin.skills.index');
     }
 
     /**
@@ -44,7 +54,8 @@ class SkillController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $skill = Skill::find($id);
+        return view('skills.edit', compact('skill'));
     }
 
     /**
@@ -52,7 +63,15 @@ class SkillController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->all();
+
+        $skill = Skill::find($id);
+        $skill->name = $data['name'];
+        $skill->description = $data['description'] ?? null;
+        $skill->power_level = $data['power_level'];
+        $skill->save();
+
+        return redirect()->route('admin.skills.index');
     }
 
     /**
@@ -60,6 +79,15 @@ class SkillController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $skill = Skill::find($id);
+
+        if ($skill->rocks()->count() > 0) {
+            return redirect()->route('admin.skills.index')
+                ->with('error', 'Cannot delete this skill because rocks are using it');
+        }
+
+        $skill->delete();
+
+        return redirect()->route('admin.skills.index');
     }
 }
