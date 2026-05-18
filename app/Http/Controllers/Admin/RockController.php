@@ -15,11 +15,39 @@ class RockController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+
+    public function index(Request $request)
     {
-        $rocks = Rock::with(['rarity', 'mood', 'type'])->get();
-        return view('rocks.index', compact('rocks'));
+        $query = Rock::query()->with(['type', 'mood', 'rarity', 'skills']);
+
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+
+        if ($request->filled('type_id')) {
+            $query->where('type_id', $request->type_id);
+        }
+
+        if ($request->filled('mood_id')) {
+            $query->where('mood_id', $request->mood_id);
+        }
+
+        if ($request->filled('skill_id')) {
+            $query->whereHas('skills', function ($q) use ($request) {
+                $q->where('skills.id', $request->skill_id);
+            });
+        }
+
+        $rocks = $query->get();
+
+        return view('rocks.index', [
+            'rocks' => $rocks,
+            'types' => RockType::all(),
+            'moods' => Mood::all(),
+            'skills' => Skill::all(),
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.

@@ -3,10 +3,67 @@
 @section('title', 'All Pet Rocks')
 
 @section('content')
+
   <div class="container py-5">
+
+    <form method="GET" action="{{ route('admin.rocks.index') }}"
+      class="card bg-dark text-light border border-secondary p-3 mb-4">
+
+      <div class="row g-3">
+
+        <div class="col-md-3">
+          <label class="form-label text-secondary">Name</label>
+          <input type="text" name="name" class="form-control bg-light text-dark border-secondary"
+            value="{{ request('name') }}" placeholder="Search by name">
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label text-secondary">Type</label>
+          <select name="type_id" class="form-select bg-light text-dark border-secondary">
+            <option value="">All Types</option>
+            @foreach ($types as $type)
+              <option value="{{ $type->id }}" {{ request('type_id') == $type->id ? 'selected' : '' }}>
+                {{ $type->name }}
+              </option>
+            @endforeach
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label text-secondary">Mood</label>
+          <select name="mood_id" class="form-select bg-light text-dark border-secondary">
+            <option value="">All Moods</option>
+            @foreach ($moods as $mood)
+              <option value="{{ $mood->id }}" {{ request('mood_id') == $mood->id ? 'selected' : '' }}>
+                {{ $mood->name }}
+              </option>
+            @endforeach
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label text-secondary">Skill</label>
+          <select name="skill_id" class="form-select bg-light text-dark border-secondary">
+            <option value="">All Skills</option>
+            @foreach ($skills as $skill)
+              <option value="{{ $skill->id }}" {{ request('skill_id') == $skill->id ? 'selected' : '' }}>
+                {{ $skill->name }}
+              </option>
+            @endforeach
+          </select>
+        </div>
+
+      </div>
+
+      <div class="mt-3 d-flex gap-2">
+        <button class="btn btn-light">Filter</button>
+        <a href="{{ route('admin.rocks.index') }}" class="btn btn-secondary">Reset</a>
+      </div>
+
+    </form>
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1 class="fw-bold">All Pet Rocks</h1>
-      <a href="{{ route('admin.rocks.create') }}" class="btn btn-primary">Add a new rock</a>
+      <a href="{{ route('admin.rocks.create') }}" class="btn btn-secondary">Add a new rock</a>
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
       @foreach ($rocks as $rock)
@@ -44,10 +101,12 @@
               <div class="d-flex justify-content-start gap-2 mt-3">
                 <a href="{{ route('admin.rocks.show', $rock->id) }}" class="btn btn-outline-light">View</a>
                 <a href="{{ route('admin.rocks.edit', $rock->id) }}" class="btn btn-outline-warning">Edit</a>
-                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteRockModal-{{ $rock->id }}">
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                  data-bs-target="#deleteRockModal-{{ $rock->id }}">
                   Delete
                 </button>
-                <div class="modal fade" id="deleteRockModal-{{ $rock->id }}" tabindex="-1" aria-labelledby="deleteRockModalLabel-{{ $rock->id }}" aria-hidden="true">
+                <div class="modal fade" id="deleteRockModal-{{ $rock->id }}" tabindex="-1"
+                  aria-labelledby="deleteRockModalLabel-{{ $rock->id }}" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
