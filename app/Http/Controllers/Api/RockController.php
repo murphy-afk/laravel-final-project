@@ -16,4 +16,20 @@ class RockController extends Controller
             'data' => $rocks
         ]);
     }
+    public function show($id)
+    {
+        $rock = Rock::with(['type', 'mood', 'rarity', 'skills'])->find($id);
+
+        if (!$rock) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Rock not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $rock
+        ]);
+    }
 }

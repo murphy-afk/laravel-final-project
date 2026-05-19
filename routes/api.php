@@ -10,3 +10,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/rocks', [RockController::class, 'index'])
     ->name('api.rocks.index');
+Route::get('/rocks/{id}', [RockController::class, 'show'])
+    ->name('api.rocks.show');
