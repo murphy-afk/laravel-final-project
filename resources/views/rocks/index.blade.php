@@ -74,9 +74,7 @@
               <p class="badge px-3 py-2 fs-6" style="background: linear-gradient(45deg, #a855f7, #ec4899);">
                 {{ $rock->rarity->name }}
               </p>
-              <p class="fw-bold fs-4 text-success">
-                €{{ number_format($rock->price, 2) }}
-              </p>
+                <p class="fw-bold mb-0">{{ $rock->adopted ? 'Adopted' : 'Not Adopted' }}</p>
               <p class="text-secondary small mb-5">{{ $rock->origin_story }}</p>
               <div class="row small mb-5">
                 <div class="col">

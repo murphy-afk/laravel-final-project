@@ -15,7 +15,6 @@ class Rock extends Model
         'texture',
         'color',
         'origin_story',
-        'price',
         'adopted',
         'image_url',
     ];

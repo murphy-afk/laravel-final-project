@@ -33,10 +33,7 @@
               <label class="form-label fw-bold">Color</label>
               <input type="text" name="color" class="form-control" value="{{ $rock->color }}">
             </div>
-            <div class="col-md-6">
-              <label class="form-label fw-bold">Price (€)</label>
-              <input type="number" step="0.01" name="price" class="form-control" value="{{ $rock->price }}">
-            </div>
+
             <div class="col-md-6">
               <label class="form-label fw-bold">Type</label>
               <select name="type_id" class="form-select">
@@ -87,6 +84,14 @@
               <textarea name="origin_story" rows="4" class="form-control">{{ $rock->origin_story }}</textarea>
             </div>
             <!-- TODO: add image upload field  -->
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Adopted Status</label>
+              <select name="adopted" class="form-select">
+                <option value="0" {{ !$rock->adopted ? 'selected' : '' }}>Not Adopted</option>
+                <option value="1" {{ $rock->adopted ? 'selected' : '' }}>Adopted</option>
+              </select>
+            </div>
+
           </div>
           <div class="mt-4 text-end">
             <button class="btn btn-primary px-4">Save Changes</button>

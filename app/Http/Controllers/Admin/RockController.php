@@ -74,7 +74,6 @@ class RockController extends Controller
         $newRock->weight = $data['weight'];
         $newRock->texture = $data['texture'];
         $newRock->color = $data['color'];
-        $newRock->price = $data['price'];
         $newRock->origin_story = $data['origin_story'];
         $newRock->mood_id = $data['mood_id'];
         $newRock->rarity_id = $data['rarity_id'];
@@ -125,11 +124,11 @@ class RockController extends Controller
         $rock->weight = $data['weight'];
         $rock->texture = $data['texture'];
         $rock->color = $data['color'];
-        $rock->price = $data['price'];
         $rock->origin_story = $data['origin_story'];
         $rock->mood_id = $data['mood_id'];
         $rock->rarity_id = $data['rarity_id'];
         $rock->type_id = $data['type_id'];
+        $rock->adopted = $request->has('adopted') ? (bool)$data['adopted'] : false;
         $rock->save();
         return redirect()->route('admin.rocks.show', $rock->id);
     }

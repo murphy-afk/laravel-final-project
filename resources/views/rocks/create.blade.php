@@ -60,10 +60,6 @@
               <input type="text" name="color" class="form-control" placeholder="Gray, beige, #cccccc..." required>
             </div>
             <div class="col-md-6">
-              <label class="form-label fw-bold">Price (€)</label>
-              <input type="number" step="0.01" name="price" class="form-control" placeholder="19.99" required>
-            </div>
-            <div class="col-md-6">
               <label class="form-label fw-bold">Skills</label>
               <div class="d-flex flex-wrap gap-3">
                 @foreach ($skills as $skill)

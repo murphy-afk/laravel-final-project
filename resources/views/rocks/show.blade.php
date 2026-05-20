@@ -41,10 +41,6 @@
                 <p class="fw-bold mb-0">{{ $rock->color }}</p>
               </div>
               <div class="col">
-                <span class="text-secondary ">Price</span>
-                <p class="fw-bold mb-0">€{{ number_format($rock->price, 2) }}</p>
-              </div>
-              <div class="col">
                 <span class="text-secondary ">Mood</span>
                 <p class="fw-bold mb-0">{{ $rock->mood?->name }}</p>
               </div>
@@ -74,6 +70,10 @@
             <div class="mt-4">
               <span class="text-secondary ">Origin Story</span>
               <p class="fw-bold mb-0">{{ $rock->origin_story }}</p>
+            </div>
+            <div class="mt-4">
+              <span class="text-secondary">Adopted status</span>
+              <p class="fw-bold mb-0">{{ $rock->adopted ? 'Adopted' : 'Not Adopted' }}</p>
             </div>
           </div>
         </div>

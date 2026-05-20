@@ -12,3 +12,5 @@ Route::get('/rocks', [RockController::class, 'index'])
     ->name('api.rocks.index');
 Route::get('/rocks/{id}', [RockController::class, 'show'])
     ->name('api.rocks.show');
+Route::post('/rocks/{id}/adopt', [RockController::class, 'adopt'])
+    ->name('api.rocks.adopt');
