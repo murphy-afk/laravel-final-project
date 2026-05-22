@@ -13,7 +13,7 @@
     </div>
     <div class="card shadow-sm">
       <div class="card-body">
-        <form action="{{ route('admin.rocks.update', $rock->id) }}" method="POST">
+        <form action="{{ route('admin.rocks.update', $rock->id) }}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('PUT')
           <div class="row g-4">
@@ -84,6 +84,18 @@
               <textarea name="origin_story" rows="4" class="form-control">{{ $rock->origin_story }}</textarea>
             </div>
             <!-- TODO: add image upload field  -->
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Rock Image</label>
+              @if ($rock->image_url)
+                <div class="mb-2">
+                  <img src="{{ asset('storage/' . $rock->image_url) }}" alt="{{ $rock->name }}"
+                    class="img-fluid rounded shadow-sm" style="max-height: 180px; object-fit: cover;">
+                </div>
+              @endif
+              <input type="file" name="image_url" class="form-control">
+              <small class="text-muted">Upload a new image to replace the current one.</small>
+            </div>
+
             <div class="col-md-6">
               <label class="form-label fw-bold">Adopted Status</label>
               <select name="adopted" class="form-select">

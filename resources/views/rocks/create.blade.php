@@ -12,7 +12,7 @@
     <div class="card shadow-lg border-0 rounded-0">
       <div class="card-body p-4">
 
-        <form action="{{ route('admin.rocks.store') }}" method="POST">
+        <form action="{{ route('admin.rocks.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
 
           <div class="row g-4">
@@ -79,6 +79,10 @@
                 placeholder="Found meditating by a river..."></textarea>
             </div>
             <!-- TODO: add image upload field -->
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Image</label>
+              <input type="file" name="image_url" id="image_url" class="form-control">
+            </div>
           </div>
           <div class="mt-4 d-flex justify-content-end gap-2">
             <a href="{{ route('admin.rocks.index') }}" class="btn btn-outline-danger">Cancel</a>

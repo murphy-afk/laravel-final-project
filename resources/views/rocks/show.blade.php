@@ -21,7 +21,7 @@
     <div class="card shadow-sm mb-4">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="{{ $rock->image_url ?? 'https://picsum.photos/500/600' }}" class="img-fluid rounded-start"
+          <img src="{{ asset('storage/' . $rock->image_url) }}" class="img-fluid rounded rock-image my-5 mx-1"
             alt="{{ $rock->name }}">
         </div>
         <div class="col-md-8">
@@ -59,7 +59,7 @@
                 <p class="fw-bold mb-0">
                   @if($rock->skills->count())
                     @foreach ($rock->skills as $skill)
-                      <span class="me-1">-{{ $skill->name }}</span> 
+                      <span class="me-1">-{{ $skill->name }}</span>
                     @endforeach
                   @else
                     <span class="text-muted">None</span>

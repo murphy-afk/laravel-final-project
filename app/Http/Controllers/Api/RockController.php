@@ -64,4 +64,14 @@ class RockController extends Controller
         ]);
     }
 
+    public function adopted()
+    {
+        $rocks = Rock::where('adopted', true)->get();
+
+        return response()->json([
+            'data' => $rocks
+        ]);
+    }
+
+
 }

@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rock extends Model
 {
+    protected $casts = [
+        'adopted' => 'boolean',
+    ];
+
     protected $fillable = [
         'name',
         'type_id',

@@ -9,6 +9,7 @@ use App\Models\Rock;
 use App\Models\RockType;
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RockController extends Controller
 {
@@ -78,6 +79,12 @@ class RockController extends Controller
         $newRock->mood_id = $data['mood_id'];
         $newRock->rarity_id = $data['rarity_id'];
         $newRock->type_id = $data['type_id'];
+
+        if ($request->hasFile('image_url')) {
+            $image_path = Storage::putFile('rock_images', $data['image_url']);
+            $newRock->image_url = $image_path;
+        }
+
         $newRock->save();
 
         if ($request->has('skills')) {
@@ -128,7 +135,16 @@ class RockController extends Controller
         $rock->mood_id = $data['mood_id'];
         $rock->rarity_id = $data['rarity_id'];
         $rock->type_id = $data['type_id'];
-        $rock->adopted = $request->has('adopted') ? (bool)$data['adopted'] : false;
+        $rock->adopted = $request->has('adopted') ? (bool) $data['adopted'] : false;
+        if ($request->hasFile('image_url')) {
+            if ($rock->image_url) {
+                Storage::disk('public')->delete($rock->image_url);
+            }
+
+            $image_path = $request->file('image_url')->store('rock_images', 'public');
+            $rock->image_url = $image_path;
+        }
+
         $rock->save();
         return redirect()->route('admin.rocks.show', $rock->id);
     }
