@@ -67,75 +67,83 @@
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
       @foreach ($rocks as $rock)
-        <div class="col">
-          <div class="card bg-dark text-light border border-secondary rounded-0 shadow rock-card h-100">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 border bg-dark text-light">
+
+            <img src="{{ $rock->image_url == null ? asset('storage/img/placeholder.jpg') : asset('storage/' . $rock->image_url) }}"
+            class="card-img-top rock-card-img"
+              alt="{{ $rock->name }}">
+
             <div class="card-body">
-              <h5 class="card-title fw-bold fs-2">{{ $rock->name }}</h5>
-              <p class="badge px-3 py-2 fs-6" style="background: linear-gradient(45deg, #a855f7, #ec4899);">
-                {{ $rock->rarity->name }}
-              </p>
-                <p class="fw-bold mb-0">{{ $rock->adopted ? 'Adopted' : 'Not Adopted' }}</p>
-              <p class="text-secondary small mb-5">{{ $rock->origin_story }}</p>
-              <div class="row small mb-5">
-                <div class="col">
-                  <span class="text-secondary">Type</span><br>
-                  <span class="fw-bold">{{ $rock->type->name }}</span>
-                </div>
-                <div class="col">
-                  <span class="text-secondary">Mood</span><br>
-                  <span class="fw-bold">{{ $rock->mood->name }}</span>
-                </div>
-                <div class="col">
-                  <span class="text-secondary">Weight</span><br>
-                  <span class="fw-bold">{{ $rock->weight }} g</span>
-                </div>
+              <h5 class="fw-bold mb-2">{{ $rock->name }}</h5>
+
+              <div class="mb-2">
+                <span class="d-block"><strong>Type:</strong> {{ $rock->type?->name }}</span>
+                <span class="d-block"><strong>Mood:</strong> {{ $rock->mood?->name }}</span>
+                <span class="d-block"><strong>Rarity:</strong> {{ $rock->rarity?->name }}</span>
               </div>
-              <div class="mb-5">
-                <span class="text-secondary">Skills:</span>
-                @foreach ($rock->skills as $skill)
-                  <span class="text-bg-light badge">{{ $skill->name }}</span>
-                @endforeach
+
+              <div class="mb-2">
+                <span class="d-block"><strong>Weight:</strong> {{ $rock->weight }} g</span>
+                <span class="d-block"><strong>Texture:</strong> {{ $rock->texture }}</span>
+                <span class="d-block"><strong>Color:</strong> {{ $rock->color }}</span>
               </div>
-              <div class="d-flex justify-content-start gap-2 mt-3">
-                <a href="{{ route('admin.rocks.show', $rock->id) }}" class="btn btn-outline-light">View</a>
-                <a href="{{ route('admin.rocks.edit', $rock->id) }}" class="btn btn-outline-warning">Edit</a>
-                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                  data-bs-target="#deleteRockModal-{{ $rock->id }}">
-                  Delete
-                </button>
-                <div class="modal fade" id="deleteRockModal-{{ $rock->id }}" tabindex="-1"
-                  aria-labelledby="deleteRockModalLabel-{{ $rock->id }}" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="deleteRockModalLabel-{{ $rock->id }}">
-                          Delete {{ $rock->name }}
-                        </h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        This action cannot be undone.
-                        Are you sure you want to delete {{ $rock->name }}?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                          Close
-                        </button>
-                        <form action="{{ route('admin.rocks.destroy', $rock->id) }}" method="POST">
-                          @csrf
-                          @method('DELETE')
-                          <button class="btn btn-outline-danger btn-sm">
-                            Delete
-                          </button>
-                        </form>
-                      </div>
-                    </div>
+
+              <div class="mb-2">
+                <strong>Skills:</strong>
+                @if($rock->skills->count())
+                  <div class="mt-1">
+                    @foreach($rock->skills as $skill)
+                      <span class="badge bg-light text-dark me-1">{{ $skill->name }}</span>
+                    @endforeach
                   </div>
-                </div>
+                @else
+                  <span class="text-muted">None</span>
+                @endif
               </div>
+
+              <p class="text-muted small mt-2">{{ Str::limit($rock->origin_story, 80) }}</p>
+            </div>
+
+            <div class="card-footer bg-dark border-0 d-flex justify-content-between">
+              <a href="{{ route('admin.rocks.edit', $rock->id) }}" class="btn btn-sm btn-outline-warning">Edit</a>
+              <a href="{{ route('admin.rocks.show', $rock->id) }}" class="btn btn-sm btn-outline-light">View</a>
+
+              <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                data-bs-target="#deleteModal-{{ $rock->id }}">
+                Delete
+              </button>
             </div>
           </div>
         </div>
+
+        <div class="modal fade" id="deleteModal-{{ $rock->id }}" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title">Delete Rock</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <div class="modal-body">
+                Are you sure you want to delete <strong>{{ $rock->name }}</strong>?
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                <form action="{{ route('admin.rocks.destroy', $rock->id) }}" method="POST" class="m-0 p-0 d-inline-block">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
       @endforeach
     </div>
   </div>

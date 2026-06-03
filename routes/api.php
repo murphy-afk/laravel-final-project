@@ -17,13 +17,3 @@ Route::get('/rocks/{id}', [RockController::class, 'show'])
     ->name('api.rocks.show');
 Route::post('/rocks/{id}/adopt', [RockController::class, 'adopt'])
     ->name('api.rocks.adopt');
-
-Route::get('/storage/{path}', function ($path) {
-    $file = Storage::disk('public')->get($path);
-    $type = Storage::disk('public')->mimeType($path);
-
-    return response($file, 200)
-        ->header('Content-Type', $type)
-        ->header('Access-Control-Allow-Origin', 'http://localhost:5174')
-        ->header('Access-Control-Allow-Credentials', 'true');
-})->where('path', '.*');
