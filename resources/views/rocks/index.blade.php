@@ -68,7 +68,7 @@
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
       @foreach ($rocks as $rock)
         <div class="col-md-4 mb-4">
-          <div class="card h-100 border bg-dark text-light">
+          <div class="card h-100 border-dark bg-dark text-light">
 
             <img src="{{ $rock->image_url == null ? asset('storage/img/placeholder.jpg') : asset('storage/' . $rock->image_url) }}"
             class="card-img-top rock-card-img"
@@ -102,7 +102,8 @@
                 @endif
               </div>
 
-              <p class="text-muted small mt-2">{{ Str::limit($rock->origin_story, 80) }}</p>
+              <p class="text-light small mt-2">
+              <strong>Origin Story: </strong> <br>{{ Str::limit($rock->origin_story, 80) }}</p>
             </div>
 
             <div class="card-footer bg-dark border-0 d-flex justify-content-between">

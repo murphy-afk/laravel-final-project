@@ -21,9 +21,7 @@
 
 <body>
     <div id="app">
-
-
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm position-fixed w-100 z-3">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ route('dashboard') }}">
                     Rock Adoption Center
@@ -39,6 +37,21 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('dashboard') }}">{{ __('Home') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.rocks.index') }}">Rocks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.moods.index') }}">Moods</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.types.index') }}">Types</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.rarities.index') }}">Rarities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.skills.index') }}">Skills</a>
                         </li>
                     </ul>
 
@@ -92,7 +105,7 @@
             </div>
         @endif
 
-        <main class="">
+        <main class="pt-4">
             @yield('content')
         </main>
     </div>
