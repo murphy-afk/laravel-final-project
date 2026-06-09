@@ -75,7 +75,9 @@
               alt="{{ $rock->name }}">
 
             <div class="card-body">
-              <h5 class="fw-bold mb-2">{{ $rock->name }}</h5>
+              <h5 class="fw-bold mb-2"><span>{{ $rock->name }}</span>
+              <span class="badge bg-light text-dark me-1">{{ $rock->adopted ? 'Adopted' : 'Not Adopted' }}</span>
+            </h5>
 
               <div class="mb-2">
                 <span class="d-block"><strong>Type:</strong> {{ $rock->type?->name }}</span>

@@ -3,7 +3,7 @@
 @section('title', 'Welcome')
 
 @section('content')
-<div class="container d-flex justify-content-center align-items-center" style="height: 70vh;">
+<div class="container d-flex justify-content-center align-items-center py-5" style="height: 70vh;">
     <div class="text-center">
         <h1 class="fw-bold mb-3">Welcome</h1>
         <p class="text-light fs-5 mb-4">Please log in to access the Pet Rock Admin Panel</p>
