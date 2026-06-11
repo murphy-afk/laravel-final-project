@@ -8,15 +8,12 @@
 
     <form method="GET" action="{{ route('admin.rocks.index') }}"
       class="card bg-dark text-light border border-secondary p-3 mb-4">
-
       <div class="row g-3">
-
         <div class="col-md-3">
           <label class="form-label text-secondary">Name</label>
           <input type="text" name="name" class="form-control bg-light text-dark border-secondary"
             value="{{ request('name') }}" placeholder="Search by name">
         </div>
-
         <div class="col-md-3">
           <label class="form-label text-secondary">Type</label>
           <select name="type_id" class="form-select bg-light text-dark border-secondary">
@@ -28,7 +25,6 @@
             @endforeach
           </select>
         </div>
-
         <div class="col-md-3">
           <label class="form-label text-secondary">Mood</label>
           <select name="mood_id" class="form-select bg-light text-dark border-secondary">
@@ -70,14 +66,14 @@
         <div class="col-md-4 mb-4">
           <div class="card h-100 border-dark bg-dark text-light">
 
-            <img src="{{ $rock->image_url == null ? asset('storage/img/placeholder.jpg') : asset('storage/' . $rock->image_url) }}"
-            class="card-img-top rock-card-img"
-              alt="{{ $rock->name }}">
+            <img
+              src="{{ $rock->image_url == null ? asset('storage/img/placeholder.jpg') : asset('storage/' . $rock->image_url) }}"
+              class="card-img-top rock-card-img" alt="{{ $rock->name }}">
 
             <div class="card-body">
               <h5 class="fw-bold mb-2"><span>{{ $rock->name }}</span>
-              <span class="badge bg-light text-dark me-1">{{ $rock->adopted ? 'Adopted' : 'Not Adopted' }}</span>
-            </h5>
+                <span class="badge bg-light text-dark me-1">{{ $rock->adopted ? 'Adopted' : 'Not Adopted' }}</span>
+              </h5>
 
               <div class="mb-2">
                 <span class="d-block"><strong>Type:</strong> {{ $rock->type?->name }}</span>
@@ -105,7 +101,8 @@
               </div>
 
               <p class="text-light small mt-2">
-              <strong>Origin Story: </strong> <br>{{ Str::limit($rock->origin_story, 80) }}</p>
+                <strong>Origin Story: </strong> <br>{{ Str::limit($rock->origin_story, 80) }}
+              </p>
             </div>
 
             <div class="card-footer bg-dark border-0 d-flex justify-content-between">

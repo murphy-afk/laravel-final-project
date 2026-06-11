@@ -9,13 +9,36 @@
       <div>
         <a href="{{ route('admin.rocks.index') }}" class="btn btn-secondary me-2">Back</a>
         <a href="{{ route('admin.rocks.edit', $rock->id) }}" class="btn btn-primary me-2">Edit</a>
-        <form action="{{ route('admin.rocks.destroy', $rock->id) }}" method="POST" class="d-inline">
-          @csrf
-          @method('DELETE')
-          <button class="btn btn-danger" onclick="return confirm('Delete this rock?')">
-            Delete
-          </button>
-        </form>
+
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $rock->id }}">
+          Delete
+        </button>
+
+        <div class="modal fade" id="deleteModal-{{ $rock->id }}" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title">Delete Rock</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <div class="modal-body">
+                Are you sure you want to delete <strong>{{ $rock->name }}</strong>?
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                <form action="{{ route('admin.rocks.destroy', $rock->id) }}" method="POST" class="m-0 p-0 d-inline-block">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card shadow-sm mb-4">

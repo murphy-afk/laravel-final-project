@@ -3,7 +3,7 @@
 @section('title', 'Edit ' . $rock->name)
 
 @section('content')
-  <div class="container py-4">
+  <div class="container py-5">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1 class="fw-bold">Edit {{ $rock->name }}</h1>

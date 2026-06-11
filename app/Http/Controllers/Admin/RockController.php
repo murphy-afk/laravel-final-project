@@ -80,8 +80,14 @@ class RockController extends Controller
         $newRock->rarity_id = $data['rarity_id'];
         $newRock->type_id = $data['type_id'];
 
-        $img_path = Storage::putFile('rock_images', $data['image_url']);
-        $newRock->image_url = $img_path;
+        if ($request->hasFile('image_url') && $request->file('image_url')->isValid()) {
+            $img_path = Storage::putFile('rock_images', $data['image_url']);
+            $newRock->image_url = $img_path;
+        } else {
+
+            $newRock->image_url = null;
+        }
+
 
         $newRock->save();
 
