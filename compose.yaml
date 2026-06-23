@@ -1,0 +1,23 @@
+services:
+  backend:
+    build: .
+    container_name: pet-rock-be
+    restart: unless-stopped
+    networks:
+      - services
+    environment:
+      - DB_HOST=mysql
+
+  frontend:
+    image: caddy:2-alpine
+    container_name: pet-rock-fe
+    restart: unless-stopped
+    volumes:
+      - .:/var/www/html
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - services
+
+networks:
+  services:
+    external: true
