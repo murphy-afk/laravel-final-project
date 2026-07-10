@@ -1,5 +1,6 @@
-admin.petrock.murphy-afk.com {
+:80 {
     root * /var/www/html/public
-    php_fastcgi pet-rock-be:9000
     file_server
+    php_fastcgi pet-rock-be:9000
+    try_files {path} {path}/ /index.php?{query}
 }
