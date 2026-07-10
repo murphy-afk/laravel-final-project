@@ -45,7 +45,7 @@
       <div class="row g-0">
         <div class="col-md-4">
           <img
-            src="{{ $rock->image_url == null ? asset('storage/img/placeholder.jpg') : asset('storage/' . $rock->image_url) }}"
+            src="{{ $rock->image_url == null ? '/storage/img/placeholder.jpg' : '/storage/' . $rock->image_url }}"
             class="img-fluid rounded rock-image my-5 mx-1" alt="{{ $rock->name }}">
         </div>
         <div class="col-md-8">
