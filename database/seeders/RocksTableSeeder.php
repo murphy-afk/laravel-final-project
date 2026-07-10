@@ -19,7 +19,7 @@ class RocksTableSeeder extends Seeder
                 'texture' => 'Smooth',
                 'color' => 'Gray',
                 'origin_story' => 'Found meditating by a quiet river.',
-                'price' => 24.99,
+
                 'adopted' => false,
                 'image_url' => null,
             ],
@@ -32,7 +32,7 @@ class RocksTableSeeder extends Seeder
                 'texture' => 'Rough',
                 'color' => 'Dark Gray',
                 'origin_story' => 'Complains about everything.',
-                'price' => 19.99,
+
                 'adopted' => false,
                 'image_url' => null,
             ],
@@ -45,7 +45,7 @@ class RocksTableSeeder extends Seeder
                 'texture' => 'Polished',
                 'color' => 'Beige',
                 'origin_story' => 'Has strong opinions about fashion.',
-                'price' => 14.99,
+
                 'adopted' => false,
                 'image_url' => null,
             ],
