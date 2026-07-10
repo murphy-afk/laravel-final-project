@@ -88,7 +88,7 @@
               <label class="form-label fw-bold">Rock Image</label>
               @if ($rock->image_url)
                 <div class="mb-2">
-                  <img src="{{ '/storage/' . $rock->image_url }}" alt="{{ $rock->name }}"
+                  <img src="{{ asset('storage/' . $rock->image_url) }}" alt="{{ $rock->name }}"
                     class="img-fluid rounded shadow-sm" style="max-height: 180px; object-fit: cover;">
                 </div>
               @endif

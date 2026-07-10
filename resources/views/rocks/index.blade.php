@@ -67,7 +67,7 @@
           <div class="card h-100 border-dark bg-dark text-light">
 
             <img
-              src="{{ $rock->image_url == null ? '/storage/img/placeholder.jpg' : '/storage/' . $rock->image_url }}"
+              src="{{ $rock->image_url == null ? asset('storage/img/placeholder.jpg') : asset('storage/' . $rock->image_url) }}"
               class="card-img-top rock-card-img" alt="{{ $rock->name }}">
 
             <div class="card-body">

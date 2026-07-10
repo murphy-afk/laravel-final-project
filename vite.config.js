@@ -5,7 +5,6 @@ import laravel from 'laravel-vite-plugin';
 import path from 'path'; // <-- require path from node
 
 export default defineConfig({
-    base: '/build/',
     plugins: [
         laravel({
             // edit the first value of the array input to point to our new sass files and folder.
