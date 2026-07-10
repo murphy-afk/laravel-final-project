@@ -9,4 +9,5 @@ RUN apk add --no-cache libpng-dev libzip-dev icu-dev zlib-dev libxml2-dev
 RUN docker-php-ext-install pdo pdo_mysql bcmath gd intl zip
 COPY . .
 COPY --from=frontend-builder /app/public/build ./public/build
+RUN composer install
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
